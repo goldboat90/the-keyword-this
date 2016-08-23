@@ -3,18 +3,24 @@
 
       //Answer
 
+      //refers to items within an object. It eliminates the need to have to call the specific object and then the property.
+
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
+    //Explicit - describes exactly what it wants to do
+    //Implicit - It infers what is being done based off implications
+    //Window - Default if it can't find anything explicitly or implicitly.
+    //new - creates a new Object through a constructor.
 
   // 3) What is the difference between call and apply?
 
       //Answer
-
+      //apply will generally work with arrays while calls will work with regular types not within arrays.
   // 4) What does .bind do?
 
       //Answer
-
+      //it's a way of setting a time limit to when a function will execute.
 
 //Next Problem
 
@@ -25,13 +31,33 @@
 
     //Code Here
 
+var user = {
+    username: "Tyler",
+    email: "tyler@gmail.com",
+    getUsername: function() {
+        return this.username;
+    }
+}
+
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
+user.getUsername();
 
 //Next Problem
 
 
 // Write the function definitions which will make the following function invocations function properly.
+
+
+function Car(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.moveCar = function() {
+        this.move = 0;
+        return this.move += 10;
+    }
+}
 
   //Function Invocations Here
 
@@ -56,6 +82,7 @@ var getYear = function(){
 //Note(no tests)
   //Code Here
 
+getYear.call(prius, mustang);
 
 //New Problem
 
@@ -69,7 +96,7 @@ var getMyUsername = function() {
  return this.username;
 };
 
-var userName = getMyUsername(); //Fix this
+var userName = getMyUsername.call(myUser) //Fix this
 
 //Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
 //Note(no tests)
